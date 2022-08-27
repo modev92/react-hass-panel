@@ -1,0 +1,116 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/errors",
+    "plugin:import/typescript"
+  ],
+  "plugins": [
+    "react-hooks",
+    "prettier"
+  ],
+  "ignorePatterns": [
+    "*.stories*"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "import/order": [
+      2,
+      {
+        "newlines-between": "never"
+      }
+    ],
+    "import/prefer-default-export": 0,
+    "import/no-extraneous-dependencies": [
+      2,
+      {
+        "devDependencies": [
+          "tests/**",
+          "**/*{test,stories}.{ts,tsx,js,jsx}",
+          "scripts/**/*"
+        ]
+      }
+    ],
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react-hooks/rules-of-hooks": 2,
+    "react-hooks/exhaustive-deps": 2,
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "warn",
+          "error",
+          "info",
+          "log"
+        ]
+      }
+    ],
+    "no-underscore-dangle": "off",
+    "no-unused-vars": 0,
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "^_",
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    // "@typescript-eslint/explicit-function-return-type": [
+    //   "error",
+    //   {
+    //     "allowExpressions": true
+    //   }
+    // ],
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "types": {
+          "String": true,
+          "Boolean": true,
+          "Number": true,
+          "Symbol": true,
+          "{}": false,
+          "Object": false,
+          "object": false,
+          "Function": true
+        },
+        "extendDefaults": true
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "src/**/*.*"
+      ],
+      "excludedFiles": [
+        "src/**/*.test.ts",
+        "src/**/*.test.tsx",
+        "src/**/*.spec.ts",
+        "src/**/*.spec.tsx"
+      ]
+    }
+  ]
+}

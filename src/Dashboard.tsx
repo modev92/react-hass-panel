@@ -1,16 +1,27 @@
 import React from 'react';
-import Card from './components/Card';
-import useLight from './hass/useLight';
+import styled from 'styled-components';
+import Light from './components/Light';
+
+const BackgroundWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  background: url(http://localhost:3000/homekit-bg.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+
+const GridWrapper = styled.div`
+  padding: 24px;
+`;
 
 const Dashboard = () => {
-  const light = useLight('light.seitenlicht');
-
   return (
-    <Card>
-      <h1>Test Switch with Metering</h1>
-      {light?.state}
-      <button onClick={light?.service?.toggle}>toggle</button>
-    </Card>
+    <BackgroundWrapper>
+      <GridWrapper>
+        <Light entityId="light.seitenlicht" />
+        {/* <Light entityId="switch.delock1_smart_plug" /> */}
+      </GridWrapper>
+    </BackgroundWrapper>
   );
 };
 

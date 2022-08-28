@@ -12,6 +12,7 @@ type StateOptionsInternal<T> = {
 export type StateOptions<T> = {
   state: string;
   lastChanged: string;
+  friendlyName: string;
   attributes: T;
 };
 

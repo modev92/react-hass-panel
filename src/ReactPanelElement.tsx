@@ -2,7 +2,29 @@
 // @ts-nocheck
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { StyleSheetManager } from 'styled-components';
+import { StyleSheetManager, createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  button, input[type="submit"], input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    width: 100%;
+  }
+`;
+
+//TODO: on Production we need other font url
+import './style/fontDev.css';
 
 export default (ReactPanel) =>
   class extends HTMLElement {
@@ -38,7 +60,10 @@ export default (ReactPanel) =>
 
         this._root.render(
           <StyleSheetManager target={this.shadowRoot}>
-            <ReactPanel hass={this._hass} />
+            <>
+              <GlobalStyle />
+              <ReactPanel hass={this._hass} />
+            </>
           </StyleSheetManager>
         );
       });

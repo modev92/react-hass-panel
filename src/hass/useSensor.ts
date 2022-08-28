@@ -32,6 +32,7 @@ const useSensor = (entityId: string) => {
 
   return {
     state: states[entityId].state,
+    friendlyName: states[entityId].attributes.friendly_name,
     lastChanged: states[entityId].last_changed,
     attributes: mapAttributes(states[entityId].attributes),
   };
@@ -56,6 +57,7 @@ export const useSensorGroup = <T extends string>(entityId: string, sensors: read
       ...output,
       [sensor]: {
         state: states[`${entityId}_${sensor}`].state,
+        friendlyName: states[`${entityId}_${sensor}`].attributes.friendly_name,
         lastChanged: states[`${entityId}_${sensor}`].last_changed,
         attributes: mapAttributes(states[`${entityId}_${sensor}`].attributes),
       },

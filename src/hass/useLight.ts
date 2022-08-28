@@ -1,8 +1,12 @@
 import React from 'react';
 import { useHass } from './HassContext';
 
+type LightAttributesInternal = {
+  friendly_name: string;
+};
+
 const useLight = (entityId: string) => {
-  const { states, callService } = useHass();
+  const { states, callService } = useHass<LightAttributesInternal>();
 
   const service = React.useMemo(() => {
     return {
@@ -28,6 +32,7 @@ const useLight = (entityId: string) => {
 
   return {
     state: states[entityId].state,
+    friendlyName: states[entityId].attributes.friendly_name,
     lastChanged: states[entityId].last_changed,
     service,
   };

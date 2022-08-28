@@ -3,9 +3,6 @@ import { ThemeProvider } from 'styled-components';
 import Dashboard from './Dashboard';
 import { HassContext } from './hass/HassContext';
 
-//TODO: on Production we need other font url
-import './style/fontDev.css';
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const App = (props: any) => {
   return (

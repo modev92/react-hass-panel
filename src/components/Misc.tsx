@@ -8,13 +8,15 @@ export const ButtonWrapper = styled.button`
 `;
 
 export const Title = styled.div`
-  font-size: 14px;
+  font-family: 'SF UI Text';
   font-weight: bold;
+  font-size: 14px;
 `;
 
 export const State = styled.div`
-  font-size: 14px;
+  font-family: 'SF UI Text';
   font-weight: bold;
+  font-size: 14px;
   color: #808080;
 `;
 

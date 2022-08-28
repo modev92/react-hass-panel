@@ -1,5 +1,12 @@
 import styled, { css } from 'styled-components';
 
+export const ButtonWrapper = styled.button`
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
 export const Title = styled.div`
   font-size: 14px;
   font-weight: bold;

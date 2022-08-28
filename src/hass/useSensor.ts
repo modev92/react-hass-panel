@@ -1,19 +1,19 @@
 import { StateOptions, useHass } from './HassContext';
 
-type SwitchAttributesInternal = {
+type SensorAttributesInternal = {
   friendly_name: string;
   state_class: string;
   device_class: string;
   unit_of_measurement: string;
 };
-type SwitchAttributes = {
+type SensorAttributes = {
   friendlyName: string;
   stateClass: string;
   deviceClass: string;
   unitOfMeasurement: string;
 };
 
-function mapAttributes(attributes: SwitchAttributesInternal) {
+function mapAttributes(attributes: SensorAttributesInternal) {
   return {
     friendlyName: attributes.friendly_name,
     stateClass: attributes.state_class,
@@ -23,7 +23,7 @@ function mapAttributes(attributes: SwitchAttributesInternal) {
 }
 
 const useSensor = (entityId: string) => {
-  const { states } = useHass<SwitchAttributesInternal>();
+  const { states } = useHass<SensorAttributesInternal>();
 
   if (!states[entityId]) {
     console.error(`${entityId} does not exist`);
@@ -45,7 +45,7 @@ const useSensor = (entityId: string) => {
  * @returns sensor data `${entityId}_${sensor}`
  */
 export const useSensorGroup = <T extends string>(entityId: string, sensors: readonly string[]) => {
-  const { states } = useHass<SwitchAttributesInternal>();
+  const { states } = useHass<SensorAttributesInternal>();
 
   if (!sensors.every((sensor) => states[`${entityId}_${sensor}`])) {
     console.error(`${entityId} does not have all of the given sensors ${sensors}`);
@@ -63,7 +63,7 @@ export const useSensorGroup = <T extends string>(entityId: string, sensors: read
       },
     }),
     {}
-  ) as Record<T, StateOptions<SwitchAttributes>>;
+  ) as Record<T, StateOptions<SensorAttributes>>;
 };
 
 export default useSensor;

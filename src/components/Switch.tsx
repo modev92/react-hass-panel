@@ -1,15 +1,15 @@
 import React from 'react';
-import useLight from '../hass/useLight';
+import useSwitch from '../hass/useSwitch';
 import Card from './Card';
 import { ButtonWrapper, State, Title } from './Misc';
-import LightSvg from './icons/LightSvg';
+import OutletSvg from './icons/OutletSvg';
 
 interface LightProps {
   entityId: string;
 }
 
-const Light = ({ entityId }: LightProps) => {
-  const hassElement = useLight(entityId);
+const Switch = ({ entityId }: LightProps) => {
+  const hassElement = useSwitch(entityId);
   if (!hassElement) {
     return null;
   }
@@ -17,7 +17,7 @@ const Light = ({ entityId }: LightProps) => {
   return (
     <Card state={hassElement?.state}>
       <ButtonWrapper onClick={hassElement?.service?.toggle}>
-        <LightSvg />
+        <OutletSvg />
         <div>
           <Title>{hassElement?.friendlyName}</Title>
           <State>{hassElement?.state}</State>
@@ -27,4 +27,4 @@ const Light = ({ entityId }: LightProps) => {
   );
 };
 
-export default Light;
+export default Switch;

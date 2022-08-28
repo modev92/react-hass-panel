@@ -4,8 +4,6 @@ import SvgStateCss from './icons/SvgStateCss';
 import { MiscStateCss } from './Misc';
 
 const CardWrapper = styled.div<{ state?: string }>`
-  width: fit-content;
-
   font-family: 'SF UI Display';
   font-style: normal;
   user-select: none;
@@ -15,6 +13,7 @@ const CardWrapper = styled.div<{ state?: string }>`
   color: black;
 
   > * {
+    min-width: 94px;
     padding: 12px;
     border-radius: 12px;
     background-color: rgb(255, 255, 255);

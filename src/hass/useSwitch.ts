@@ -2,7 +2,7 @@ import React from 'react';
 import { useHass } from './HassContext';
 
 const useSwitch = (entityId: string) => {
-  const { states, callService } = useHass();
+  const { states, callService } = useHass<{ friendly_name: string }>();
 
   const service = React.useMemo(() => {
     return {
@@ -28,6 +28,7 @@ const useSwitch = (entityId: string) => {
 
   return {
     state: states[entityId].state,
+    friendlyName: states[entityId].attributes.friendly_name,
     lastChanged: states[entityId].last_changed,
     service,
   };

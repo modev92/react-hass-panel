@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Light from './components/Light';
+import Switch from './components/Switch';
 
 const BackgroundWrapper = styled.div`
   width: 100%;
@@ -11,7 +12,10 @@ const BackgroundWrapper = styled.div`
 `;
 
 const GridWrapper = styled.div`
-  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(94px, 1fr));
+  gap: 24px;
+  padding: 32px;
 `;
 
 const Dashboard = () => {
@@ -19,7 +23,7 @@ const Dashboard = () => {
     <BackgroundWrapper>
       <GridWrapper>
         <Light entityId="light.seitenlicht" />
-        {/* <Light entityId="switch.delock1_smart_plug" /> */}
+        <Switch entityId="switch.delock1_smart_plug" />
       </GridWrapper>
     </BackgroundWrapper>
   );

@@ -48,6 +48,24 @@ export default (ReactPanel) =>
       Object.defineProperties(this, props);
 
       this._root = ReactDOM.createRoot(this.shadowRoot as HTMLElement);
+      if (window.location.search.includes('kiosk')) {
+        this._hideSidebar();
+      }
+    }
+
+    _hideSidebar() {
+      const newStyle = document.createElement('style');
+      newStyle.innerHTML = `app-drawer-layout:not([narrow]){ left: calc(var(--app-drawer-width) * -1);} app-drawer {display: none;} `;
+
+      const appDrawer = window.document.body
+        .querySelector('home-assistant')
+        ?.shadowRoot?.querySelector('home-assistant-main')
+        ?.shadowRoot.querySelector('app-drawer');
+
+      appDrawer?.removeAttribute('opened');
+      appDrawer?.removeAttribute('persistent');
+      appDrawer?.setAttribute('swipe-open');
+      appDrawer.append(newStyle);
     }
 
     disconnectedCallback() {

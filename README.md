@@ -35,6 +35,6 @@ panel_custom:
     sidebar_title: My Production React Panel
     sidebar_icon: mdi:react
     url_path: react-panel-prod
-    js_url: /local/react-panel/static/js/bundle.js
+    js_url: /local/react-panel/static/js/main[HASH].js
     embed_iframe: false
 ```

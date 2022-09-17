@@ -5,17 +5,21 @@ import LayerSelector from './components/LayerSelector';
 import Light from './components/Light';
 import Switch from './components/Switch';
 import WeatherInfo from './components/WeatherInfo';
+import hassMedia from './utils/hassMedia';
 
 const BackgroundWrapper = styled.div`
   width: 100%;
   height: 100%;
-  background: url(http://localhost:3000/homekit-bg.jpeg);
-  /* background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)), url(http://localhost:3000/PersonalBackground.jpeg); */
+  /* background: url(${hassMedia('homekit-bg.jpeg')}); */
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)), url(${hassMedia('PersonalBackground.jpeg')});
 
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   padding: 32px;
+
+  display: flex;
+  flex-direction: column;
 `;
 
 const Header = styled.header`

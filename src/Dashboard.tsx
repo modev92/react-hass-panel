@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import DateAndTime from './components/DateAndTime';
 import LayerSelector from './components/LayerSelector';
 import Light from './components/Light';
+import MediaPlayer from './components/MediaPlayer';
 import Switch from './components/Switch';
 import WeatherInfo from './components/WeatherInfo';
 
@@ -16,6 +17,9 @@ const BackgroundWrapper = styled.div`
   background-size: cover;
   background-position: center;
   padding: 32px;
+
+  display: flex;
+  flex-direction: column;
 `;
 
 const Header = styled.header`
@@ -37,6 +41,13 @@ const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(94px, 1fr));
   gap: 24px;
+`;
+
+const BottomElements = styled.div`
+  display: flex;
+  flex-grow: 1;
+  align-items: flex-end;
+  justify-content: flex-end;
 `;
 
 const Dashboard = () => {
@@ -62,6 +73,9 @@ const Dashboard = () => {
         <Switch entityId="switch.delock1_smart_plug" />
         <Switch entityId="switch.parce" />
       </GridWrapper>
+      <BottomElements>
+        <MediaPlayer entityId="media_player.kuche" />
+      </BottomElements>
     </BackgroundWrapper>
   );
 };

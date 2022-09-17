@@ -8,6 +8,9 @@ const SvgStateCss = css<{ state?: string }>`
     path.secondary {
       fill: #414141;
     }
+    path.dark {
+      fill: #232323;
+    }
   }
 
   ${({ state }) =>

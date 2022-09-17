@@ -2,6 +2,7 @@ import React from 'react';
 
 type CallServiceData = {
   entity_id: string;
+  [key: string]: any;
 };
 
 type StateOptionsInternal<T> = {

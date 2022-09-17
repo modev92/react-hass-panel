@@ -6,12 +6,13 @@ import Light from './components/Light';
 import MediaPlayer from './components/MediaPlayer';
 import Switch from './components/Switch';
 import WeatherInfo from './components/WeatherInfo';
+import hassMedia from './utils/hassMedia';
 
 const BackgroundWrapper = styled.div`
   width: 100%;
   height: 100%;
-  background: url(http://localhost:3000/homekit-bg.jpeg);
-  /* background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)), url(http://localhost:3000/PersonalBackground.jpeg); */
+  /* background: url(${hassMedia('homekit-bg.jpeg')}); */
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)), url(${hassMedia('PersonalBackground.jpeg')});
 
   background-repeat: no-repeat;
   background-size: cover;

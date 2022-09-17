@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { StyleSheetManager, createGlobalStyle } from 'styled-components';
+import Font from './style/Font';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -24,9 +25,6 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
 `;
-
-//TODO: on Production we need other font url
-import './style/fontDev.css';
 
 export default (ReactPanel) =>
   class extends HTMLElement {
@@ -51,6 +49,8 @@ export default (ReactPanel) =>
       if (window.location.search.includes('kiosk')) {
         this._hideSidebar();
       }
+
+      this._renderFont();
     }
 
     _hideSidebar() {
@@ -70,6 +70,12 @@ export default (ReactPanel) =>
 
     disconnectedCallback() {
       this._root.unmount();
+    }
+
+    _renderFont() {
+      const newStyle = document.createElement('style');
+      newStyle.innerHTML = Font;
+      window.document.head.append(newStyle);
     }
 
     _render() {

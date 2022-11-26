@@ -4,6 +4,8 @@ import SvgStateCss from './icons/SvgStateCss';
 import { MiscStateCss } from './Misc';
 
 const CardWrapper = styled.div<{ state?: string }>`
+  position: relative;
+  overflow: hidden;
   font-family: 'SF UI Display';
   font-style: normal;
   user-select: none;

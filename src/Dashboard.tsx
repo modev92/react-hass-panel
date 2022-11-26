@@ -29,9 +29,7 @@ const Header = styled.header`
   grid-template-columns: 2.5fr 1fr;
 `;
 
-const HeaderInfo = styled.div`
-  mix-blend-mode: plus-lighter;
-`;
+const HeaderInfo = styled.div``;
 
 const Title = styled.h1`
   font-family: 'SF UI Display';

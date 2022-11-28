@@ -3,7 +3,9 @@ import styled, { css } from 'styled-components';
 import SvgStateCss from './icons/SvgStateCss';
 import { MiscStateCss } from './Misc';
 
-const CardWrapper = styled.div<{ state?: string }>`
+export type State = 'on' | 'off' | string;
+
+const CardWrapper = styled.div<{ state?: State }>`
   position: relative;
   overflow: hidden;
   font-family: 'SF UI Display';
@@ -33,7 +35,7 @@ const CardWrapper = styled.div<{ state?: string }>`
 
 interface CardProps {
   children: React.ReactNode;
-  state?: string;
+  state?: State;
 }
 
 const Card = ({ children, state }: CardProps): React.ReactElement => {

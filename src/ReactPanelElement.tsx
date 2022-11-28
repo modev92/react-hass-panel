@@ -84,6 +84,8 @@ export default (ReactPanel) =>
       this._renderScheduled = Promise.resolve().then(() => {
         this._renderScheduled = null;
 
+        // console.log('t', this._hass);
+
         this._root.render(
           <StyleSheetManager target={this.shadowRoot}>
             <>

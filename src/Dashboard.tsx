@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Button from './components/Button';
 import DateAndTime from './components/DateAndTime';
 import LayerSelector from './components/LayerSelector';
 import Light from './components/Light';
 import MediaPlayer from './components/MediaPlayer';
-import Scene from './components/Scene';
 import Sensor from './components/Sensor';
 import Switch from './components/Switch';
 import WeatherInfo from './components/WeatherInfo';
@@ -31,7 +31,9 @@ const Header = styled.header`
   grid-template-columns: 2.5fr 1fr;
 `;
 
-const HeaderInfo = styled.div``;
+const HeaderInfo = styled.div`
+  color: white;
+`;
 
 const Title = styled.h1`
   font-family: 'SF UI Display';
@@ -81,7 +83,8 @@ const Dashboard = () => {
         <Light entityId="light.seitenlicht" />
         <Switch entityId="switch.delock1_smart_plug" />
         <Switch entityId="switch.parce" />
-        <Scene entityId="scene.test" state="on" />
+        {/* <Scene entityId="scene.test" /> */}
+        <Button entityId="button.essenfertig" />
       </GridWrapper>
       <Space />
       <GridWrapperSmall>

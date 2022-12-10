@@ -17,13 +17,19 @@ export type StateOptions<T> = {
   attributes: T;
 };
 
+export type EntitiesOptions = {
+  icon?: string;
+};
+
 export interface IHassContext<Attributes = object> {
   states: Record<string, StateOptionsInternal<Attributes>>;
+  entities: Record<string, EntitiesOptions>;
   callService: (domain: string, service: string, data: CallServiceData) => void;
 }
 
 const defaultState = {
   states: {},
+  entities: {},
   callService: () => null,
 };
 

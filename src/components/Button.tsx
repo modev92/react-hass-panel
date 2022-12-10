@@ -1,5 +1,5 @@
 import React from 'react';
-import useScene from '../hass/useScene';
+import useButton from '../hass/useButton';
 import Card from './Card';
 import { BasicWrapper, Title } from './Misc';
 
@@ -7,16 +7,16 @@ interface Props {
   entityId: string;
 }
 
-const Scene = ({ entityId }: Props) => {
-  const hassElement = useScene(entityId);
+const Button = ({ entityId }: Props) => {
+  const hassElement = useButton(entityId);
   if (!hassElement) {
     return null;
   }
 
   return (
     <Card singleState>
-      <BasicWrapper as="button" vCenter onClick={hassElement?.service?.turnOn}>
-        <ha-state-icon icon={hassElement.icon || 'mdi:alpha-s-circle'}></ha-state-icon>
+      <BasicWrapper as="button" vCenter onClick={hassElement?.service?.press}>
+        <ha-state-icon icon={hassElement.icon} state={hassElement?.state}></ha-state-icon>
         <div>
           <Title>{hassElement?.friendlyName}</Title>
         </div>
@@ -25,4 +25,4 @@ const Scene = ({ entityId }: Props) => {
   );
 };
 
-export default Scene;
+export default Button;

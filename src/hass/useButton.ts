@@ -1,13 +1,13 @@
 import React from 'react';
 import { useHass } from './HassContext';
 
-const useScene = (entityId: string) => {
+const useButton = (entityId: string) => {
   const { states, callService, entities } = useHass<{ friendly_name: string }>();
 
   const service = React.useMemo(() => {
     return {
-      turnOn: () =>
-        callService('scene', 'turn_on', {
+      press: () =>
+        callService('button', 'press', {
           entity_id: entityId,
         }),
     };
@@ -19,11 +19,12 @@ const useScene = (entityId: string) => {
   }
 
   return {
+    state: states[entityId].state,
+    icon: entities[entityId].icon,
     friendlyName: states[entityId].attributes.friendly_name,
     lastChanged: states[entityId].last_changed,
     service,
-    icon: entities[entityId].icon,
   };
 };
 
-export default useScene;
+export default useButton;

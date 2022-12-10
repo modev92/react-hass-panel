@@ -4,11 +4,11 @@ import Card from './Card';
 import { ButtonWrapper, State, Title } from './Misc';
 import OutletSvg from './icons/OutletSvg';
 
-interface LightProps {
+interface Props {
   entityId: string;
 }
 
-const Switch = ({ entityId }: LightProps) => {
+const Switch = ({ entityId }: Props) => {
   const hassElement = useSwitch(entityId);
   if (!hassElement) {
     return null;

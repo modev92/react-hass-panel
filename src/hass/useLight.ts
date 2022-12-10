@@ -3,6 +3,7 @@ import { useHass } from './HassContext';
 
 type LightAttributesInternal = {
   friendly_name: string;
+  brightness: number;
 };
 
 const useLight = (entityId: string) => {
@@ -13,6 +14,11 @@ const useLight = (entityId: string) => {
       toggle: () =>
         callService('light', 'toggle', {
           entity_id: entityId,
+        }),
+      setBrightness: (brightnessPercentage: number) =>
+        callService('light', 'turn_on', {
+          entity_id: entityId,
+          brightness: Math.round((brightnessPercentage * 255) / 100),
         }),
       turnOn: () =>
         callService('light', 'turn_on', {
@@ -33,6 +39,7 @@ const useLight = (entityId: string) => {
   return {
     state: states[entityId].state,
     friendlyName: states[entityId].attributes.friendly_name,
+    brightness: Math.round(((states[entityId].attributes.brightness || 0) / 255) * 100),
     lastChanged: states[entityId].last_changed,
     service,
   };

@@ -81,7 +81,7 @@ const Dashboard = () => {
       </Header>
 
       <GridWrapper>
-        <Light entityId="light.seitenlicht_master" />
+        <Light entityId="light.seitenlicht" />
         <Switch entityId="switch.delock1_smart_plug" />
         <Switch entityId="switch.parce" />
         {/* <Scene entityId="scene.test" /> */}

@@ -1,6 +1,7 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import useLight from '../hass/useLight';
 import useInteraction from '../utils/useInteraction';
+import useDebounce from '../utils/useDebounce';
 import Card from './Card';
 import { ButtonWrapper, State, Title } from './Misc';
 import LightSvg from './icons/LightSvg';
@@ -11,7 +12,15 @@ interface LightProps {
 
 const Light = ({ entityId }: LightProps) => {
   const hassElement = useLight(entityId);
-  const [brightness, setBrightness] = useState(60);
+  const [brightness, setBrightness] = useState(hassElement?.brightness || 0);
+
+  useEffect(() => {
+    setBrightness(hassElement?.brightness || 0);
+  }, [hassElement?.brightness]);
+
+  const debounced = useDebounce((value) => {
+    hassElement?.service.setBrightness(value);
+  }, 500);
 
   const onLongPress = useCallback(() => {
     console.log('long');
@@ -22,9 +31,10 @@ const Light = ({ entityId }: LightProps) => {
     (percentage: number) => {
       if (hassElement?.state === 'on') {
         setBrightness(percentage);
+        debounced(percentage);
       }
     },
-    [hassElement?.state]
+    [debounced, hassElement?.state]
   );
   const interactionProps = useInteraction({ onSwipe: setOnSwipe, onLongPress, onClick }, { initialSwipePercentage: brightness });
 
@@ -38,6 +48,7 @@ const Light = ({ entityId }: LightProps) => {
         <LightSvg />
         <div>
           <Title>{hassElement?.friendlyName}</Title>
+          {/* TODO check if brightness is supported */}
           {/* <State>{hassElement?.state}</State> */}
           <State>{hassElement?.state === 'on' ? `${brightness}%` : hassElement?.state} </State>
         </div>

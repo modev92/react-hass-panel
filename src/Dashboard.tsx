@@ -5,6 +5,7 @@ import DateAndTime from './components/DateAndTime';
 import LayerSelector from './components/LayerSelector';
 import Light from './components/Light';
 import MediaPlayer from './components/MediaPlayer';
+import Script from './components/Script';
 import Sensor from './components/Sensor';
 import Switch from './components/Switch';
 import WeatherInfo from './components/WeatherInfo';
@@ -80,16 +81,18 @@ const Dashboard = () => {
       </Header>
 
       <GridWrapper>
-        <Light entityId="light.seitenlicht" />
+        <Light entityId="light.seitenlicht_master" />
         <Switch entityId="switch.delock1_smart_plug" />
         <Switch entityId="switch.parce" />
         {/* <Scene entityId="scene.test" /> */}
-        <Button entityId="button.essenfertig" />
       </GridWrapper>
       <Space />
       <GridWrapperSmall>
         <Sensor entityId="sensor.gaszaehler_24a" variant="small" />
         <Sensor entityId="sensor.gaszaehler_24a" variant="large" />
+        <Button entityId="button.essenfertig" />
+        <Script entityId="script.seitenlicht" script="seitenlicht" />
+
         {/* TODO:
             1. LED Color
             2. Sensor (Temperatur, Luftfeuchtigkeit, ...)

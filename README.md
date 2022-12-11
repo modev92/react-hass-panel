@@ -10,6 +10,7 @@ Install and run a development server
 npm run install
 npm run start
 ```
+Add a new `dashboard.yaml` file.
 
 Add the following entry to your `configuration.yaml` file:
 
@@ -21,6 +22,8 @@ panel_custom:
     url_path: react-panel-dev
     js_url: http://localhost:3000/static/js/bundle.js
     embed_iframe: false
+    config:
+      dashboard: !include dashboard.yaml
 ```
 
 Restart Home Assistant.
@@ -37,4 +40,6 @@ panel_custom:
     url_path: react-panel-prod
     js_url: /local/react-panel/static/js/main[HASH].js
     embed_iframe: false
+    config:
+      dashboard: !include dashboard.yaml
 ```

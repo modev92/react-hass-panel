@@ -90,7 +90,7 @@ export default (ReactPanel) =>
           <StyleSheetManager target={this.shadowRoot}>
             <>
               <GlobalStyle />
-              <ReactPanel hass={this._hass} />
+              <ReactPanel hass={this._hass} dashboardConfig={this._panel?.config?.dashboard || {}} />
             </>
           </StyleSheetManager>
         );

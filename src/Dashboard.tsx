@@ -62,8 +62,14 @@ const BottomElements = styled.div`
   justify-content: flex-end;
 `;
 
-const Dashboard = () => {
+interface DashboardProps {
+  config: Record<string, string>;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const Dashboard = ({ config }: DashboardProps) => {
   const [currentLayer, setCurrentLayer] = useState(0);
+  // console.log('config', config);
 
   return (
     <BackgroundWrapper>

@@ -8,7 +8,7 @@ const App = (props: any) => {
   return (
     <ThemeProvider theme={{}}>
       <HassContext.Provider value={props.hass}>
-        <Dashboard />
+        <Dashboard config={props.dashboardConfig} />
       </HassContext.Provider>
     </ThemeProvider>
   );

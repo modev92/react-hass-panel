@@ -8,6 +8,7 @@ import MediaPlayer from './components/MediaPlayer';
 import Script from './components/Script';
 import Sensor from './components/Sensor';
 import Switch from './components/Switch';
+import Video from './components/Video';
 import WeatherInfo from './components/WeatherInfo';
 import hassMedia from './utils/hassMedia';
 
@@ -103,9 +104,11 @@ const Dashboard = ({ config }: DashboardProps) => {
             1. LED Color
             2. Sensor (Temperatur, Luftfeuchtigkeit, ...)
             3. Camera
+            4. Rolladen
         */}
       </GridWrapperSmall>
       <BottomElements>
+        <Video entityId="video_src" />
         <MediaPlayer entityId="media_player.kuche" />
       </BottomElements>
     </BackgroundWrapper>
